@@ -369,8 +369,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
         }
     }
 
@@ -382,7 +381,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
 
         try {
             stmt = cn.createStatement();
-            qry = "Select * from DEPARTAMENTO WHERE ESTADO=1";
+            qry = "Select * from DEPARTAMENTO WHERE ESTADO=1 ORDER BY ID_DEPARTAMENTO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];

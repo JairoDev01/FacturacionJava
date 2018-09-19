@@ -433,7 +433,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
 
         try {
             stmt = cn.createStatement();
-            qry = "Select * FROM PRODUCTO where ESTADO='1'";
+            qry = "Select * FROM PRODUCTO where ESTADO='1' ORDER BY ID_PRODUCTO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];

@@ -455,7 +455,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
         model.addColumn("FECHA_INGRESO");
         try {
             stmt = cn.createStatement();
-            qry = "Select * from CLIENTE where ESTATUS='1'";
+            qry = "Select * from CLIENTE where ESTATUS='1' ORDER BY ID_CLIENTE";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];

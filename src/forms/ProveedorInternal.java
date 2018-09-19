@@ -472,7 +472,7 @@ public class ProveedorInternal extends javax.swing.JInternalFrame {
        model.addColumn("TELEFONO");
          try { 
             stmt=cn.createStatement();
-            qry="Select * from PROVEEDOR where ESTATUS='1'";
+            qry="Select * from PROVEEDOR where ESTATUS='1' ORDER BY ID_PROVEEDOR";
             ResultSet  rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];

@@ -467,7 +467,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         model.addColumn("ID_DEPARTAMENTO");
         try {
             stmt = cn.createStatement();
-            qry = "Select ID_EMPLEADO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NIT,SALARIO,ID_DEPARTAMENTO FROM EMPLEADO where ESTATUS='1'";
+            qry = "Select ID_EMPLEADO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NIT,SALARIO,ID_DEPARTAMENTO FROM EMPLEADO where ESTATUS='1' ORDER BY ID_EMPLEADO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];
