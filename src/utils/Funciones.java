@@ -40,10 +40,9 @@ public class Funciones {
         return fech;
     }
 
-
     public static java.util.Date parsearFechaJava(String fecha) {
         String[] array = fecha.split("-");
-        String fech =array[2]+"/"+array[1]+"/"+array[0];
+        String fech = array[2] + "/" + array[1] + "/" + array[0];
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date textFieldAsDate = null;
         try {
@@ -52,5 +51,15 @@ public class Funciones {
             // deal with ParseException
         }
         return textFieldAsDate;
+    }
+
+    public static void validarCampoTexto(java.awt.event.KeyEvent evt, String campo) {
+        char car = evt.getKeyChar();
+        if (campo.length() >= 8) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
     }
 }
