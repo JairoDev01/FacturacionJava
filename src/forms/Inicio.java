@@ -5,6 +5,7 @@
  */
 package forms;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -116,6 +117,11 @@ public class Inicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuItem1.setText("Empleados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Proveedores");
@@ -224,7 +230,7 @@ public class Inicio extends javax.swing.JFrame {
         this.jpanel1.add(dep);
         dep.show();
         dep.setLocation(50,5);
-        }catch(Exception e){}
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -233,10 +239,21 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(pro);
             pro.show();
             pro.setLocation(50,5);
-        }catch(Exception e){
+        }catch(SQLException e){
             
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try{
+            EmpleadoInternal pro = new EmpleadoInternal();
+            this.jpanel1.add(pro);
+            pro.show();
+            pro.setLocation(50,5);
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
