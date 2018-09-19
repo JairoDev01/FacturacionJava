@@ -49,7 +49,7 @@ public class CreateConnection {
         String jdbcUrl = "jdbc:oracle:thin:@"+this.hostname+":"+this.port+":"+this.database;
         
         conn = DriverManager.getConnection(jdbcUrl,this.username,this.password);
-        System.out.println("Conxion Establecida");
+        System.out.println("Conexion Establecida");
         return conn;
     }
     
