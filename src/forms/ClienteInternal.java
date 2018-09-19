@@ -28,8 +28,8 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     CallableStatement cts;
     ResultSet r;
     CreateConnection conectar = new CreateConnection();
-    Vector columnNames = new Vector();
-    Vector data = new Vector();
+    Vector columnNames;
+    Vector data;
     Statement stmt;
     String qry = null;
     /**
@@ -38,6 +38,8 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
 
     public ClienteInternal() throws SQLException {
+        this.data = new Vector();
+        this.columnNames = new Vector();
         initComponents();
         this.stmt = null;
         this.jTableCliente.setModel(modelo);
@@ -465,7 +467,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Cliente  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -512,7 +514,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Error al modificar", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -586,8 +588,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
         }
     }
 
@@ -603,7 +604,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }
 
     private void habilitar() {
-        this.txtId.setEnabled(true);
+        this.txtId.setEnabled(false);
         this.txtNombre.setEnabled(true);
         this.txtApellido.setEnabled(true);
         this.txtRazon.setEnabled(true);
@@ -656,8 +657,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
                 model.addRow(fila);
             }
             this.jTableCliente.setModel(model);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException ex) {
         }
     }
 
