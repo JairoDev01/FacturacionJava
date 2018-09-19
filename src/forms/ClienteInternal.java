@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forms;
 
 import conexion.CreateConnection;
@@ -400,19 +395,13 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtRazonKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        Funciones.validarCampoTexto(evt, this.txtTelefono.getText());
+        Funciones.valCampoTel(evt, this.txtTelefono.getText());
         
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
         // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if (txtNit.getText().length() >= 11) {
-            evt.consume();
-        }
-        if ((car < '0' || car > '9')) {
-            evt.consume();
-        }
+       Funciones.valCampoNit(evt, this.txtNit.getText());
     }//GEN-LAST:event_txtNitKeyTyped
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

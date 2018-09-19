@@ -53,9 +53,18 @@ public class Funciones {
         return textFieldAsDate;
     }
 
-    public static void validarCampoTexto(java.awt.event.KeyEvent evt, String campo) {
+    public static void valCampoTel(java.awt.event.KeyEvent evt, String campo) {
         char car = evt.getKeyChar();
         if (campo.length() >= 8) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }
+    public static void valCampoNit(java.awt.event.KeyEvent evt, String campo) {
+         char car = evt.getKeyChar();
+        if (campo.length() >= 11) {
             evt.consume();
         }
         if ((car < '0' || car > '9')) {
