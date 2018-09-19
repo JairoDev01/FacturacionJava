@@ -192,7 +192,7 @@ public class Inicio extends javax.swing.JFrame {
     private void exitSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitSistemaActionPerformed
         // TODO add your handling code here:
         int opcion = 0;
-        opcion = JOptionPane.showConfirmDialog(null,"Realmente desea salir del sistema","Confirmar",JOptionPane.YES_NO_OPTION);
+        opcion = JOptionPane.showConfirmDialog(null,"Realmente desea salir","Confirmar",JOptionPane.YES_NO_OPTION);
 
         if (opcion == JOptionPane.YES_NO_OPTION){
             System.exit(0);
@@ -206,7 +206,7 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(cli);
             cli.show();
             cli.setLocation(50, 5);
-        }catch(Exception e){}
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -217,7 +217,7 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(cli);
             cli.show();
             cli.setLocation(50, 5);
-        }catch(Exception e){}
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
@@ -250,7 +250,7 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(pro);
             pro.show();
             pro.setLocation(50,5);
-        }catch(Exception e){
+        }catch(SQLException e){
             
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -284,6 +284,7 @@ public class Inicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Inicio().setVisible(true);
             }

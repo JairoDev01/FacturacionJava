@@ -64,7 +64,7 @@ public class Funciones {
     }
     public static void valCampoNit(java.awt.event.KeyEvent evt, String campo) {
          char car = evt.getKeyChar();
-        if (campo.length() >= 11) {
+        if (campo.length() >= 10) {
             evt.consume();
         }
         if ((car < '0' || car > '9')) {
