@@ -400,14 +400,8 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtRazonKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if (txtTelefono.getText().length() >= 9) {
-            evt.consume();
-        }
-        if ((car < '0' || car > '9')) {
-            evt.consume();
-        }
+        Funciones.validarCampoTexto(evt, this.txtTelefono.getText());
+        
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
@@ -647,7 +641,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
                 Object[] fila = new Object[model.getColumnCount()];
                 for (int i = 0; i < fila.length; i++) {
                     if (i == 8) {
-                        String stringFecha = Funciones.obtenerFecha(rs.getString(i+1));
+                        String stringFecha = Funciones.obtenerFecha(rs.getString(i + 1));
                         fila[i] = Funciones.parsearFechaJava(stringFecha);
                     } else {
                         fila[i] = rs.getString(i + 1);
