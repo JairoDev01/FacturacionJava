@@ -212,12 +212,12 @@ public class Inicio extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
 
-       /* try{
-            Productos pl = new Productos();
-            jDesktopPane1.add(pl);
-            pl.show();
-            pl.setLocation(50,5);
-        }catch(Exception e){}*/
+       try{
+            ProductoInternal cli =new ProductoInternal();
+            this.jpanel1.add(cli);
+            cli.show();
+            cli.setLocation(50, 5);
+        }catch(Exception e){}
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
