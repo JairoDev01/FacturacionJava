@@ -378,11 +378,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        char car = evt.getKeyChar();
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')) {
-            evt.consume();
-        }
-
+        Funciones.valCampoTexto(evt);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoKeyTyped
 

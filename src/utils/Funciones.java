@@ -71,4 +71,11 @@ public class Funciones {
             evt.consume();
         }
     }
+    public static void valCampoTexto(java.awt.event.KeyEvent evt) {
+        char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')
+                &&(car =='á'||car=='Á')&&(car =='é'||car=='É')&&(car =='í'||car=='Í')&&(car =='ó'||car=='Ó')&&(car =='ú'||car=='Ú')) {
+            evt.consume();
+        }
+    }
 }
