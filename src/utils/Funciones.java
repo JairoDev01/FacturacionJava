@@ -84,14 +84,14 @@ public class Funciones {
     }
 
     public static String obtenerIdTable(JTable table) {
-        String id="1";
+        String id = "-1";
         try {
-            
-            int row = table.getSelectedRow();
-            if (row != -1) {
-                id = (String) table.getValueAt(row, 0);
-            } else {                
 
+            int row = table.getSelectedRow();
+            if (row <0) {
+                id = "-1";
+            } else {              
+                id = (String) table.getValueAt(row, 0);
             }
         } catch (Exception e) {
 

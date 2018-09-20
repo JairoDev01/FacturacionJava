@@ -22,7 +22,7 @@ import utils.Funciones;
  *
  * @author JairoDev
  */
-public class ProductoInternal extends javax.swing.JInternalFrame {
+public class UsuarioInternal extends javax.swing.JInternalFrame {
 
     Connection cn;
     CallableStatement cts;
@@ -33,17 +33,17 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     Statement stmt;
     String qry = null;
     /**
-     * Creates new form ProductoInternal
+     * Creates new form UsuarioInternal
      */
     DefaultTableModel modelo = new DefaultTableModel();
 
-    public ProductoInternal() throws SQLException {
+    public UsuarioInternal() throws SQLException {
         initComponents();
         this.data = new Vector();
         this.columnNames = new Vector();
         initComponents();
         this.stmt = null;
-        this.jTableProducto.setModel(modelo);
+        this.jTableUsuario.setModel(modelo);
         cn = conectar.getConnection();
         mostrarDatos();
     }
@@ -57,39 +57,38 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogProveedor = new javax.swing.JDialog();
+        jDialogEmpleado = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableProveedor = new javax.swing.JTable();
+        jTableEmpleado = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        Salir = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblCodigo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lvlApellido = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        txtDescripcion = new javax.swing.JTextField();
-        txtStocMin = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         lblDire = new javax.swing.JLabel();
-        txtPro = new javax.swing.JTextField();
+        txtEmple = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtStock = new javax.swing.JTextField();
-        lblNombre1 = new javax.swing.JLabel();
-        lvlApellido1 = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JTextField();
-        btnProveedor = new javax.swing.JButton();
+        txtPass = new javax.swing.JTextField();
+        Contraseña = new javax.swing.JLabel();
+        btnBuscarDep = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        dateChoser1 = new com.toedter.calendar.JDateChooser();
+        dateChoser2 = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableProducto = new javax.swing.JTable();
+        jTableUsuario = new javax.swing.JTable();
 
-        jDialogProveedor.setMinimumSize(new java.awt.Dimension(685, 350));
-        jDialogProveedor.setModal(true);
-        jDialogProveedor.setResizable(false);
+        jDialogEmpleado.setMinimumSize(new java.awt.Dimension(872, 420));
+        jDialogEmpleado.setModal(true);
 
-        jTableProveedor.setModel(new javax.swing.table.DefaultTableModel(
+        jTableEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,7 +99,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTableProveedor);
+        jScrollPane2.setViewportView(jTableEmpleado);
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,50 +108,49 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jDialogProveedorLayout = new javax.swing.GroupLayout(jDialogProveedor.getContentPane());
-        jDialogProveedor.getContentPane().setLayout(jDialogProveedorLayout);
-        jDialogProveedorLayout.setHorizontalGroup(
-            jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogProveedorLayout.createSequentialGroup()
-                .addContainerGap()
+        javax.swing.GroupLayout jDialogEmpleadoLayout = new javax.swing.GroupLayout(jDialogEmpleado.getContentPane());
+        jDialogEmpleado.getContentPane().setLayout(jDialogEmpleadoLayout);
+        jDialogEmpleadoLayout.setHorizontalGroup(
+            jDialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEmpleadoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane2)
                 .addContainerGap())
-            .addGroup(jDialogProveedorLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
+            .addGroup(jDialogEmpleadoLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
                 .addComponent(jButton1)
-                .addGap(184, 184, 184)
-                .addComponent(Salir)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addGap(209, 209, 209)
+                .addComponent(jButton2)
+                .addContainerGap(321, Short.MAX_VALUE))
         );
-        jDialogProveedorLayout.setVerticalGroup(
-            jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogProveedorLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jDialogEmpleadoLayout.setVerticalGroup(
+            jDialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogEmpleadoLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jDialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(Salir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         setClosable(true);
         setIconifiable(true);
+        setResizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mantenimiento Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(204, 0, 51))); // NOI18N
 
-        lblCodigo.setText("ID_PRODUCTO");
+        lblCodigo.setText("id usuario");
 
-        lblNombre.setText("Descripcion:");
-
-        lvlApellido.setText("Stock Minimo");
+        lblNombre.setText("Usuario");
 
         txtId.setEnabled(false);
         txtId.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -164,26 +162,19 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtDescripcion.setEnabled(false);
-        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUsuario.setEnabled(false);
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDescripcionKeyTyped(evt);
+                txtUsuarioKeyTyped(evt);
             }
         });
 
-        txtStocMin.setEnabled(false);
-        txtStocMin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtStocMinKeyTyped(evt);
-            }
-        });
+        lblDire.setText("Id Empleado");
 
-        lblDire.setText("Proveedor");
-
-        txtPro.setEnabled(false);
-        txtPro.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtEmple.setEnabled(false);
+        txtEmple.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtProKeyTyped(evt);
+                txtEmpleKeyTyped(evt);
             }
         });
 
@@ -238,71 +229,74 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtStock.setEnabled(false);
-        txtStock.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPass.setEnabled(false);
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtStockKeyTyped(evt);
+                txtPassKeyTyped(evt);
             }
         });
 
-        lblNombre1.setText("Stock");
+        Contraseña.setText("Segundo Nombre");
 
-        lvlApellido1.setText("Precio U");
-
-        txtPrecio.setEnabled(false);
-        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecioKeyTyped(evt);
-            }
-        });
-
-        btnProveedor.setText("B");
-        btnProveedor.setEnabled(false);
-        btnProveedor.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarDep.setText("B");
+        btnBuscarDep.setEnabled(false);
+        btnBuscarDep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveedorActionPerformed(evt);
+                btnBuscarDepActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Fecha");
+
+        dateChoser1.setEnabled(false);
+
+        dateChoser2.setEnabled(false);
+
+        jLabel2.setText("Fecha");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodigo)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombre)
-                                    .addComponent(lvlApellido))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStocMin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lvlApellido1)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblNombre1)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dateChoser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblNombre)
+                                .addGap(72, 72, 72)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Contraseña)
+                                .addGap(29, 29, 29)
+                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dateChoser2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtEmple, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblDire)
-                                .addGap(159, 159, 159))
-                            .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(159, 159, 159)))
                         .addGap(18, 18, 18)
-                        .addComponent(btnProveedor)))
+                        .addComponent(btnBuscarDep)
+                        .addGap(96, 96, 96))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblCodigo)
+                        .addGap(73, 73, 73)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,26 +315,27 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCodigo)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNombre1)
-                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Contraseña)
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(dateChoser1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(dateChoser2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lvlApellido)
-                            .addComponent(txtStocMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lvlApellido1)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDire)
-                            .addComponent(btnProveedor)))
+                            .addComponent(btnBuscarDep)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -354,10 +349,10 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jTableProducto.setModel(new javax.swing.table.DefaultTableModel(
+        jTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -368,28 +363,29 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableProducto);
+        jScrollPane1.setViewportView(jTableUsuario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1198, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1037, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -403,14 +399,13 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtIdKeyTyped
 
-    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         Funciones.valCampoTexto(evt);
-    }//GEN-LAST:event_txtDescripcionKeyTyped
+    }//GEN-LAST:event_txtUsuarioKeyTyped
 
-    private void txtStocMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStocMinKeyTyped
-        Funciones.valCampoNit(evt, this.txtStocMin.getText());
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStocMinKeyTyped
+    private void txtEmpleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleKeyTyped
+        Funciones.valCampoNit(evt, this.txtEmple.getText());
+    }//GEN-LAST:event_txtEmpleKeyTyped
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
@@ -420,7 +415,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         btnGuardar.setEnabled(true);
         btnBuscar.setEnabled(false);
         btnCancelar.setEnabled(true);
-        btnProveedor.setEnabled(true);
+        btnBuscarDep.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -434,7 +429,6 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         insertarEmpleado();
         mostrarDatos();
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -454,82 +448,67 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         this.btnBuscar.setEnabled(true);
         this.btnEliminar.setEnabled(false);
         this.btnModificar.setEnabled(false);
-        this.btnProveedor.setEnabled(false);
+        this.btnBuscarDep.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
-        Funciones.valCampoNit(evt, this.txtStock.getText());
-    }//GEN-LAST:event_txtStockKeyTyped
+    private void txtPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassKeyTyped
 
-    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
-        Funciones.valCampoNit(evt, this.txtPrecio.getText());
-    }//GEN-LAST:event_txtPrecioKeyTyped
-
-    private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
+    private void btnBuscarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepActionPerformed
         try {
-            mostrarProveedores();
-
+            mostarDepartamento();
         } catch (Exception e) {
 
         }
-    }//GEN-LAST:event_btnProveedorActionPerformed
+    }//GEN-LAST:event_btnBuscarDepActionPerformed
 
-    private void txtProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProKeyTyped
-        Funciones.valCampoNit(evt, this.txtPro.getText());
-    }//GEN-LAST:event_txtProKeyTyped
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.jDialogEmpleado.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{
-           if(Funciones.obtenerIdTable(jTableProveedor).equals("-1")){
-               JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
-           }else{
-               this.txtPro.setText(Funciones.obtenerIdTable(jTableProveedor));
-               this.jDialogProveedor.dispose();
-           }
-       }catch(HeadlessException e){
-           
-       }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-       try{
-           this.jDialogProveedor.dispose();
-       }catch(Exception e){
-           
-       }
-    }//GEN-LAST:event_SalirActionPerformed
-    private void mostrarProveedores() {
         try {
-            DefaultTableModel model = new DefaultTableModel();
+            if (Funciones.obtenerIdTable(this.jTableEmpleado).equals("-1")) {
+                JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                this.txtEmple.setText(Funciones.obtenerIdTable(this.jTableEmpleado));
+                this.jDialogEmpleado.dispose();
+            }
+        } catch (HeadlessException e) {
 
-            model.addColumn("ID_PROVEEDOR");
-            model.addColumn("EMPRESA");
-            model.addColumn("DIRECCION");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void mostarDepartamento() {
+        DefaultTableModel model = new DefaultTableModel();
 
+        model.addColumn("ID_EMPLEADO");
+        model.addColumn("PRIMER NOMBRE");
+        model.addColumn("PRIMER APELLIDO");
+        try {
             stmt = cn.createStatement();
-            qry = "Select ID_PROVEEDOR, EMPRESA, DIRECCION FROM PROVEEDOR where ESTATUS='1' ORDER BY ID_PROVEEDOR";
+            qry = "Select ID_EMPLEADO,PRIMER_NOMBRE, PRIMER_APELLIDO FROM EMPLEADO WHERE ESTATUS='1' ORDER BY ID_EMPLEADO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];
                 for (int i = 0; i < fila.length; i++) {
                     fila[i] = rs.getString(i + 1);
+
                 }
                 model.addRow(fila);
             }
-            this.jTableProveedor.setModel(model);
-
-        } catch (SQLException e) {
-
+            this.jTableEmpleado.setModel(model);
+        } catch (SQLException ex) {
         }
-        this.jDialogProveedor.setLocationRelativeTo(null);
-        this.jDialogProveedor.show();
+        this.jDialogEmpleado.setLocationRelativeTo(null);
+        this.jDialogEmpleado.show();
     }
 
     private void obtenerId() {
         try {
 
             stmt = cn.createStatement();
-            qry = AppConstasQry.qryMaxEmpleado;
+            qry = AppConstasQry.qryMaxUsuario;
             r = stmt.executeQuery(qry);
 
             if (r.next()) {
@@ -542,48 +521,53 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     private void mostrarDatos() {
         DefaultTableModel model = new DefaultTableModel();
 
-        model.addColumn("ID_PRODUCTO");
-        model.addColumn("DESCRIPCION");
-        model.addColumn("STOCK");
-        model.addColumn("STOCK_MIN");
-        model.addColumn("PRECIO U");
-        model.addColumn("ID_PROVEEDOR");
-
+        model.addColumn("ID_USUARIO");
+        model.addColumn("USUARIO");
+        model.addColumn("FECHA_INGRESO");
+        model.addColumn("FECHA_ACTUALIZACION");
+        model.addColumn("ID_EMPLEADO");
+       
         try {
             stmt = cn.createStatement();
-            qry = "Select * FROM PRODUCTO where ESTADO='1' ORDER BY ID_PRODUCTO";
+            qry = "Select ID_USUARIO,USUARIO,FECHA_INGRESO,FECHA_ULTIMA_MODIFICACION,ID_EMPLEADO FROM USUARIO where ESTADO='1' ORDER BY ID_USUARIO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];
                 for (int i = 0; i < fila.length; i++) {
-
-                    fila[i] = rs.getString(i + 1);
+                     if (i == 2||i==3) {
+                        String stringFecha = Funciones.obtenerFecha(rs.getString(i + 1));
+                        fila[i] = Funciones.parsearFechaJava(stringFecha);
+                    } else {
+                        fila[i] = rs.getString(i + 1);
+                    }
+                    
 
                 }
                 model.addRow(fila);
             }
-            this.jTableProducto.setModel(model);
+            this.jTableUsuario.setModel(model);
         } catch (SQLException ex) {
         }
     }
 
     private void insertarEmpleado() {
-        String id = txtId.getText(), descripcion = txtDescripcion.getText(), stock = txtStock.getText(), stockMin = txtStocMin.getText();
-        String precio = txtPrecio.getText(), idPro = txtPro.getText();
+        String id = txtId.getText(), usu = txtUsuario.getText(), pass = txtPass.getText();
+        String fechaIn = Funciones.getFecha(dateChoser1), fechaUp = Funciones.getFecha(dateChoser2);
+        String idEmp = txtEmple.getText();
 
         try {
-            cts = cn.prepareCall("{call INSERTAR_PRODUCTO(?,?,?,?,?,?,?)}");
+            cts = cn.prepareCall("{call INSERTAR_USUARIO(?,?,?,?,?,?,?)}");
             cts.setInt(1, Integer.parseInt(id));
-            cts.setString(2, descripcion);
-            cts.setInt(3, Integer.parseInt(stock));
-            cts.setString(4, stockMin);
-            cts.setFloat(5, Float.parseFloat(precio));
-            cts.setInt(6, Integer.parseInt(idPro));
+            cts.setString(2, usu);
+            cts.setString(3, pass);
+            cts.setDate(4, Funciones.parseaFechaOracle(fechaIn));
+            cts.setDate(5, Funciones.parseaFechaOracle(fechaUp));
+            cts.setInt(6, Integer.parseInt(idEmp));
             cts.setInt(7, 1);
 
             int rpta = cts.executeUpdate();
             if (rpta == 1) {
-                JOptionPane.showMessageDialog(this, "Producto Registrado correctamente!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
             }
             desabilitar();
@@ -591,30 +575,31 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
+            btnBuscarDep.setEnabled(false);
             this.btnCancelar.setEnabled(false);
-            this.btnProveedor.setEnabled(false);
         } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }
 
     private void buscarEmpleado() {
-        String cod = JOptionPane.showInputDialog("INGRESE EL CODIGO DEL PRODUCTO A BUSCAR");
+        String cod = JOptionPane.showInputDialog("INGRESE EL CODIGO DEL Usuario A BUSCAR");
         try {
             stmt = cn.createStatement();
-            qry = "SELECT ID_PRODUCTO,DESCRIPCION,STOCK,STOCK_MINIMO,PRECIO_UNITARIO,ID_PROVEEDOR"
-                    + " FROM USUARIO_JAVA.PRODUCTO"
-                    + " WHERE ID_PRODUCTO = " + Integer.parseInt(cod) + " AND ESTADO=1";
+            qry = "SELECT ID_USUARIO,USUARIO,FECHA_INGRESO,FECHA_ULTIMA_MODIFICACION,ID_EMPLEADO"
+                    + " FROM USUARIO_JAVA.USUARIO"
+                    + " WHERE ID_USUARIO = " + Integer.parseInt(cod) + " AND ESTADO=1";
             r = stmt.executeQuery(qry);
 
             if (r.next()) {
-                JOptionPane.showMessageDialog(this, "producto Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "USUARIO Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 this.txtId.setText(r.getString(1));
-                this.txtDescripcion.setText(r.getString(2));
-                this.txtStock.setText(r.getString(3));
-                this.txtStocMin.setText(r.getString(4));
-                this.txtPrecio.setText(r.getString(5));
-                this.txtPro.setText(r.getString(6));
+                this.txtUsuario.setText(r.getString(2));
+                String fechaIn = Funciones.obtenerFecha(r.getString(3));
+                this.dateChoser1.setDate(Funciones.parsearFechaJava(fechaIn));
+                String fechaUp = Funciones.obtenerFecha(r.getString(4));
+                this.dateChoser2.setDate(Funciones.parsearFechaJava(fechaUp));
+                this.txtEmple.setText(r.getString(5));
 
                 this.btnNuevo.setEnabled(false);
                 this.btnGuardar.setEnabled(false);
@@ -622,10 +607,10 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
-                this.btnProveedor.setEnabled(true);
+                this.btnBuscarDep.setEnabled(true);
                 habilitar();
             } else {
-                JOptionPane.showMessageDialog(this, "producto  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuario  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
@@ -633,21 +618,22 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     }
 
     private void modificarEmpleado() {
-        String id = txtId.getText(), descripcion = txtDescripcion.getText(), stock = txtStock.getText(), stockMin = txtStocMin.getText();
-        String precio = txtPrecio.getText(), idPro = txtPro.getText();
+        String id = txtId.getText(), usu = txtUsuario.getText(), pass = txtPass.getText();
+        String fechaIn = Funciones.getFecha(dateChoser1), fechaUp = Funciones.getFecha(dateChoser2);
+        String idEmp = txtEmple.getText();
 
         try {
-            cts = cn.prepareCall("{call ACTUALIZAR_PRODUCTO(?,?,?,?,?,?,?)}");
+            cts = cn.prepareCall("{call ACTUALIZAR_USUARIO(?,?,?,?,?,?)}");
             cts.setInt(1, Integer.parseInt(id));
-            cts.setString(2, descripcion);
-            cts.setInt(3, Integer.parseInt(stock));
-            cts.setString(4, stockMin);
-            cts.setFloat(5, Float.parseFloat(precio));
-            cts.setInt(6, Integer.parseInt(idPro));
-            cts.setInt(7, 1);
+            cts.setString(2, usu);
+            cts.setString(3, pass);
+            cts.setDate(4, Funciones.parseaFechaOracle(fechaIn));
+            cts.setDate(5, Funciones.parseaFechaOracle(fechaUp));
+            cts.setString(6, idEmp);
+
             int rpta = cts.executeUpdate();
             if (rpta == 1) {
-                JOptionPane.showMessageDialog(this, "Producto Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuario Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 limpiar();
                 desabilitar();
                 this.btnBuscar.setEnabled(true);
@@ -655,7 +641,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
-                this.btnProveedor.setEnabled(false);
+                this.btnBuscarDep.setEnabled(false);
                 mostrarDatos();
             } else {
 
@@ -670,13 +656,13 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     private void eliminarEmpleado() {
         String cod = this.txtId.getText();
         try {
-            cts = cn.prepareCall("{call ELIMINAR_PRODUCTO(?,?)}");
+            cts = cn.prepareCall("{call ELIMINAR_USUARIO(?,?)}");
             cts.setInt(1, Integer.parseInt(cod));
             cts.setInt(2, 0);
             int rpta = cts.executeUpdate();
 
             if (rpta == 1) {
-                JOptionPane.showMessageDialog(this, "PRODUCTO Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "USUARIO Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 
                 limpiar();
                 desabilitar();
@@ -685,9 +671,10 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
+                this.btnBuscarDep.setEnabled(false);
                 mostrarDatos();
             } else {
-                JOptionPane.showMessageDialog(this, "PRODUCTO No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "USUARIO No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 
             }
 
@@ -698,61 +685,56 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
 
     private void limpiar() {
         this.txtId.setText("");
-        this.txtDescripcion.setText("");
-        this.txtStock.setText("");
-        this.txtStocMin.setText("");
-        this.txtPrecio.setText("");
-        this.txtPro.setText("");
-
+        this.txtUsuario.setText("");
+        this.txtPass.setText("");
+        this.txtEmple.setText("");
     }
 
     private void habilitar() {
         this.txtId.setEnabled(false);
-        this.txtDescripcion.setEnabled(true);
-        this.txtStock.setEnabled(true);
-        this.txtStocMin.setEnabled(true);
-        this.txtPrecio.setEnabled(true);
-        this.txtPro.setEnabled(true);
-
+        this.txtUsuario.setEnabled(true);
+        this.txtPass.setEnabled(true);
+        this.txtEmple.setEnabled(true);
+        this.dateChoser1.setEnabled(true);
+        this.dateChoser2.setEnabled(true);
     }
 
     private void desabilitar() {
         this.txtId.setEnabled(false);
-        this.txtDescripcion.setEnabled(false);
-        this.txtStock.setEnabled(false);
-        this.txtStocMin.setEnabled(false);
-        this.txtPrecio.setEnabled(false);
-        this.txtPro.setEnabled(false);
-
+        this.txtUsuario.setEnabled(false);
+        this.txtPass.setEnabled(false);
+        this.txtEmple.setEnabled(false);
+        this.dateChoser1.setEnabled(false);
+        this.dateChoser2.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Salir;
+    private javax.swing.JLabel Contraseña;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarDep;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnProveedor;
+    private com.toedter.calendar.JDateChooser dateChoser1;
+    private com.toedter.calendar.JDateChooser dateChoser2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialogProveedor;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialogEmpleado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableProducto;
-    private javax.swing.JTable jTableProveedor;
+    private javax.swing.JTable jTableEmpleado;
+    private javax.swing.JTable jTableUsuario;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDire;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNombre1;
-    private javax.swing.JLabel lvlApellido;
-    private javax.swing.JLabel lvlApellido1;
-    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtEmple;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtPro;
-    private javax.swing.JTextField txtStocMin;
-    private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
