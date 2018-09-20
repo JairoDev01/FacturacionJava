@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import utils.Funciones;
 
 /**
  *
@@ -90,6 +91,11 @@ public class ProveedorInternal extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Proveedores"));
 
         txtNit.setEnabled(false);
+        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNitKeyTyped(evt);
+            }
+        });
 
         txtCiudad.setEnabled(false);
 
@@ -111,6 +117,11 @@ public class ProveedorInternal extends javax.swing.JInternalFrame {
         txtTelContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelContactoActionPerformed(evt);
+            }
+        });
+        txtTelContacto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelContactoKeyTyped(evt);
             }
         });
 
@@ -179,6 +190,11 @@ public class ProveedorInternal extends javax.swing.JInternalFrame {
         jLabel4.setText("Telefono");
 
         txtTelefono.setEnabled(false);
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Nit");
 
@@ -457,6 +473,18 @@ public class ProveedorInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        Funciones.valCampoTel(evt, this.txtTelefono.getText());
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtTelContactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelContactoKeyTyped
+        Funciones.valCampoTel(evt, this.txtTelContacto.getText());
+    }//GEN-LAST:event_txtTelContactoKeyTyped
+
+    private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
+        Funciones.valCampoNit(evt, this.txtNit.getText());
+    }//GEN-LAST:event_txtNitKeyTyped
      private void mostrarDatos() {
         DefaultTableModel model = new DefaultTableModel();
       
