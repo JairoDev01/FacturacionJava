@@ -217,6 +217,11 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         lblDire.setText("Departamento");
 
         txtDep.setEnabled(false);
+        txtDep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDepKeyTyped(evt);
+            }
+        });
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -288,6 +293,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         });
 
         btnBuscarDep.setText("B");
+        btnBuscarDep.setEnabled(false);
         btnBuscarDep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarDepActionPerformed(evt);
@@ -458,6 +464,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         btnGuardar.setEnabled(true);
         btnBuscar.setEnabled(false);
         btnCancelar.setEnabled(true);
+        btnBuscarDep.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -471,7 +478,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         insertarEmpleado();
         mostrarDatos();
-        this.btnCancelar.setEnabled(false);
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -491,6 +498,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         this.btnBuscar.setEnabled(true);
         this.btnEliminar.setEnabled(false);
         this.btnModificar.setEnabled(false);
+        this.btnBuscarDep.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtNombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombre2KeyTyped
@@ -502,10 +510,10 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtApellido2KeyTyped
 
     private void btnBuscarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepActionPerformed
-        try{
+        try {
             mostarDepartamento();
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_btnBuscarDepActionPerformed
 
@@ -514,7 +522,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
+        try {
             int row = this.jTableDep.getSelectedRow();
             if (row != -1) {
                 String id = (String) jTableDep.getValueAt(row, 0);
@@ -522,16 +530,20 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
                 this.txtDep.setText(id);
                 this.jDialogDepartamento.dispose();
             } else {
-                 JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
 
             }
-        }catch(Exception e){
-        
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    private void mostarDepartamento(){
+
+    private void txtDepKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDepKeyTyped
+        Funciones.valCampoNit(evt, this.txtDep.getText());
+    }//GEN-LAST:event_txtDepKeyTyped
+    private void mostarDepartamento() {
         DefaultTableModel model = new DefaultTableModel();
-        
+
         model.addColumn("ID_DEPARTAMENTO");
         model.addColumn("DEPARTAMENTO");
         try {
@@ -551,6 +563,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         }
         this.jDialogDepartamento.show();
     }
+
     private void obtenerId() {
         try {
 
@@ -564,6 +577,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
         }
     }
+
     private void mostrarDatos() {
         DefaultTableModel model = new DefaultTableModel();
 
@@ -592,8 +606,9 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
         }
     }
+
     private void insertarEmpleado() {
-        String id = txtId.getText(), nombre1 = txtNombre1.getText(), nombre2 = txtNombre2.getText(),apellido1 = txtApellido1.getText(), apellido2 = txtApellido2.getText();
+        String id = txtId.getText(), nombre1 = txtNombre1.getText(), nombre2 = txtNombre2.getText(), apellido1 = txtApellido1.getText(), apellido2 = txtApellido2.getText();
         String nit = txtNit.getText(), salario = txtSalario.getText();
         String idDep = txtDep.getText();
 
@@ -619,6 +634,8 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
+            btnBuscarDep.setEnabled(false);
+            this.btnCancelar.setEnabled(false);
         } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
         }
@@ -643,7 +660,6 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
                 this.txtNit.setText(r.getString(6));
                 this.txtSalario.setText(r.getString(7));
                 this.txtDep.setText(r.getString(8));
-                
 
                 this.btnNuevo.setEnabled(false);
                 this.btnGuardar.setEnabled(false);
@@ -651,6 +667,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
+                this.btnBuscarDep.setEnabled(true);
                 habilitar();
             } else {
                 JOptionPane.showMessageDialog(this, "Empleado  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -659,8 +676,9 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }
+
     private void modificarEmpleado() {
-       String id = txtId.getText(), nombre1 = txtNombre1.getText(), nombre2 = txtNombre2.getText(),apellido1 = txtApellido1.getText(), apellido2 = txtApellido2.getText();
+        String id = txtId.getText(), nombre1 = txtNombre1.getText(), nombre2 = txtNombre2.getText(), apellido1 = txtApellido1.getText(), apellido2 = txtApellido2.getText();
         String nit = txtNit.getText(), salario = txtSalario.getText();
         String idDep = txtDep.getText();
 
@@ -674,7 +692,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
             cts.setString(6, nit);
             cts.setInt(7, Integer.parseInt(salario));
             cts.setInt(8, Integer.parseInt(idDep));
-           
+
             int rpta = cts.executeUpdate();
             if (rpta == 1) {
                 JOptionPane.showMessageDialog(this, "Empleado Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -685,6 +703,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
+                this.btnBuscarDep.setEnabled(false);
                 mostrarDatos();
             } else {
 
@@ -695,7 +714,8 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }
-     private void eliminarEmpleado() {
+
+    private void eliminarEmpleado() {
         String cod = this.txtId.getText();
         try {
             cts = cn.prepareCall("{call ELIMINAR_EMPLEADO(?,?)}");
@@ -713,6 +733,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
+                this.btnBuscarDep.setEnabled(false);
                 mostrarDatos();
             } else {
                 JOptionPane.showMessageDialog(this, "EMPLEADO No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
