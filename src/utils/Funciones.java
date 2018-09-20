@@ -3,6 +3,8 @@ package utils;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -40,10 +42,9 @@ public class Funciones {
         return fech;
     }
 
-
     public static java.util.Date parsearFechaJava(String fecha) {
         String[] array = fecha.split("-");
-        String fech =array[2]+"/"+array[1]+"/"+array[0];
+        String fech = array[2] + "/" + array[1] + "/" + array[0];
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date textFieldAsDate = null;
         try {
@@ -52,5 +53,49 @@ public class Funciones {
             // deal with ParseException
         }
         return textFieldAsDate;
+    }
+
+    public static void valCampoTel(java.awt.event.KeyEvent evt, String campo) {
+        char car = evt.getKeyChar();
+        if (campo.length() >= 8) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }
+
+    public static void valCampoNit(java.awt.event.KeyEvent evt, String campo) {
+        char car = evt.getKeyChar();
+        if (campo.length() >= 10) {
+            evt.consume();
+        }
+        if ((car < '0' || car > '9')) {
+            evt.consume();
+        }
+    }
+
+    public static void valCampoTexto(java.awt.event.KeyEvent evt) {
+        char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')
+                && (car == 'á' || car == 'Á') && (car == 'é' || car == 'É') && (car == 'í' || car == 'Í') && (car == 'ó' || car == 'Ó') && (car == 'ú' || car == 'Ú')) {
+            evt.consume();
+        }
+    }
+
+    public static String obtenerIdTable(JTable table) {
+        String id = "-1";
+        try {
+
+            int row = table.getSelectedRow();
+            if (row <0) {
+                id = "-1";
+            } else {              
+                id = (String) table.getValueAt(row, 0);
+            }
+        } catch (Exception e) {
+
+        }
+        return id;
     }
 }

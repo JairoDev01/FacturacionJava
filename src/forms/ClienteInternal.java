@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forms;
 
 import conexion.CreateConnection;
@@ -28,8 +23,8 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     CallableStatement cts;
     ResultSet r;
     CreateConnection conectar = new CreateConnection();
-    Vector columnNames = new Vector();
-    Vector data = new Vector();
+    Vector columnNames;
+    Vector data;
     Statement stmt;
     String qry = null;
     /**
@@ -38,6 +33,8 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
 
     public ClienteInternal() throws SQLException {
+        this.data = new Vector();
+        this.columnNames = new Vector();
         initComponents();
         this.stmt = null;
         this.jTableCliente.setModel(modelo);
@@ -80,6 +77,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -306,6 +304,14 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setText("Calcelar");
+        btnCancelar.setEnabled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -315,17 +321,16 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGuardar)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(520, 520, 520))
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnGuardar)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnBuscar))
+                .addGap(508, 508, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -341,10 +346,12 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBuscar)
-                            .addComponent(btnNuevo))
+                            .addComponent(btnNuevo)
+                            .addComponent(btnBuscar))
                         .addGap(18, 18, 18)
-                        .addComponent(btnGuardar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnCancelar))
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
@@ -361,62 +368,30 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtIdKeyReleased
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
-        // TODO add your handling code here:
 
-        char car = evt.getKeyChar();
-        if (txtId.getText().length() >= 5) {
-            evt.consume();
-        }
-        if ((car < 'c' || car > 'c') && (car < 'C' || car > 'C') && (car < '0' || car > '9')) {
-            evt.consume();
-        }
     }//GEN-LAST:event_txtIdKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')) {
-            evt.consume();
-        }
+        Funciones.valCampoTexto(evt);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        char car = evt.getKeyChar();
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')) {
-            evt.consume();
-        }
-
+        Funciones.valCampoTexto(evt);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtRazonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonKeyTyped
-        // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')) {
-            evt.consume();
-        }
+        Funciones.valCampoTexto(evt);
     }//GEN-LAST:event_txtRazonKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if (txtTelefono.getText().length() >= 9) {
-            evt.consume();
-        }
-        if ((car < '0' || car > '9')) {
-            evt.consume();
-        }
+        Funciones.valCampoTel(evt, this.txtTelefono.getText());
+
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
         // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if (txtNit.getText().length() >= 11) {
-            evt.consume();
-        }
-        if ((car < '0' || car > '9')) {
-            evt.consume();
-        }
+        Funciones.valCampoNit(evt, this.txtNit.getText());
     }//GEN-LAST:event_txtNitKeyTyped
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -430,44 +405,11 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
         btnNuevo.setEnabled(false);
         btnGuardar.setEnabled(true);
         btnBuscar.setEnabled(false);
+        btnCancelar.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        String cod = JOptionPane.showInputDialog("INGRESE EL CODIGO DEL Cliente A BUSCAR");
-        try {
-            stmt = cn.createStatement();
-            qry = "SELECT ID_CLIENTE,NOMBRE,APELLIDO,RAZON_SOCIAL,NIT,DIRECCION,TELEFONO,EMAIL,FECHA_INGRESO,ESTATUS"
-                    + " FROM USUARIO_JAVA.CLIENTE"
-                    + " WHERE ID_CLIENTE = " + Integer.parseInt(cod) + " AND ESTATUS=1";
-            r = stmt.executeQuery(qry);
-
-            if (r.next()) {
-                JOptionPane.showMessageDialog(this, "Cliente Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                this.txtId.setText(r.getString(1));
-                this.txtNombre.setText(r.getString(2));
-                this.txtApellido.setText(r.getString(3));
-                this.txtRazon.setText(r.getString(4));
-                this.txtNit.setText(r.getString(5));
-                this.txtDire.setText(r.getString(6));
-                this.txtTelefono.setText(r.getString(7));
-                this.txtEmail.setText(r.getString(8));
-                String stringFecha = Funciones.obtenerFecha(r.getString(9));
-                this.dateChoser.setDate(Funciones.parsearFechaJava(stringFecha));
-
-                //Habilitar();
-                this.btnNuevo.setEnabled(false);
-                this.btnGuardar.setEnabled(false);
-                this.btnBuscar.setEnabled(false);
-                this.btnModificar.setEnabled(true);
-                this.btnEliminar.setEnabled(true);
-                habilitar();
-            } else {
-                JOptionPane.showMessageDialog(this, "Cliente  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.toString());
-        }
+        buscarCliente();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -477,73 +419,61 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         insertarCliente();
         mostrarDatos();
+        this.btnCancelar.setEnabled(false);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        String id = txtId.getText(), nombre = txtNombre.getText(), apellido = txtApellido.getText();
-        String telefono = txtTelefono.getText(), nit = txtNit.getText(), razon = txtRazon.getText();
-        String direccion = txtDire.getText(), email = txtEmail.getText(), fecha = Funciones.getFecha(dateChoser);
-
-        try {
-            cts = cn.prepareCall("{call ACTUALIZAR_CLIENTE(?,?,?,?,?,?,?,?,?,?)}");
-            cts.setInt(1, Integer.parseInt(id));
-            cts.setString(2, nombre);
-            cts.setString(3, apellido);
-            cts.setString(4, razon);
-            cts.setString(5, nit);
-            cts.setString(6, direccion);
-            cts.setString(7, telefono);
-            cts.setString(8, email);
-            cts.setDate(9, Funciones.parseaFechaOracle(fecha));
-            cts.setInt(10, 1);
-
-            int rpta = cts.executeUpdate();
-            if (rpta == 1) {
-                JOptionPane.showMessageDialog(this, "Proveedor Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-                limpiar();
-                desabilitar();
-                this.btnBuscar.setEnabled(true);
-                this.btnNuevo.setEnabled(true);
-                this.btnModificar.setEnabled(false);
-                this.btnEliminar.setEnabled(false);
-                mostrarDatos();
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Error al modificar", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.toString());
-        }
+        modificarCliente();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String cod = this.txtId.getText();
-        try {
-            cts = cn.prepareCall("{call ELIMINAR_CLIENTE(?,?)}");
-            cts.setInt(1, Integer.parseInt(cod));
-            cts.setInt(2, 0);
-            int rpta = cts.executeUpdate();
-
-            if (rpta == 1) {
-                JOptionPane.showMessageDialog(this, "Cliente Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
-                limpiar();
-                desabilitar();
-                this.btnBuscar.setEnabled(true);
-                this.btnNuevo.setEnabled(true);
-                this.btnModificar.setEnabled(false);
-                this.btnEliminar.setEnabled(false);
-                mostrarDatos();
-            } else {
-                JOptionPane.showMessageDialog(this, "Cliente No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
-            }
-
-        } catch (SQLException | HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+        eliminarCliente();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.limpiar();
+        this.desabilitar();
+        this.btnGuardar.setEnabled(false);
+        this.btnNuevo.setEnabled(true);
+        this.btnCancelar.setEnabled(false);
+        this.btnBuscar.setEnabled(true);
+        this.btnEliminar.setEnabled(false);
+        this.btnModificar.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void mostrarDatos() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("ID_CLIENTE");
+        model.addColumn("NOMBRE");
+        model.addColumn("APELLIDO");
+        model.addColumn("RAZON");
+        model.addColumn("NIT");
+        model.addColumn("DIRECCION");
+        model.addColumn("TELEFONO");
+        model.addColumn("EMAIL");
+        model.addColumn("FECHA_INGRESO");
+        try {
+            stmt = cn.createStatement();
+            qry = "Select * from CLIENTE where ESTATUS='1' ORDER BY ID_CLIENTE";
+            ResultSet rs = stmt.executeQuery(qry);
+            while (rs.next()) {
+                Object[] fila = new Object[model.getColumnCount()];
+                for (int i = 0; i < fila.length; i++) {
+                    if (i == 8) {
+                        String stringFecha = Funciones.obtenerFecha(rs.getString(i + 1));
+                        fila[i] = Funciones.parsearFechaJava(stringFecha);
+                    } else {
+                        fila[i] = rs.getString(i + 1);
+                    }
+
+                }
+                model.addRow(fila);
+            }
+            this.jTableCliente.setModel(model);
+        } catch (SQLException ex) {
+        }
+    }
     private void obtenerId() {
         try {
 
@@ -557,7 +487,6 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
         }
     }
-
     private void insertarCliente() {
         String id = txtId.getText(), nombre = txtNombre.getText(), apellido = txtApellido.getText();
         String telefono = txtTelefono.getText(), nit = txtNit.getText(), razon = txtRazon.getText();
@@ -586,8 +515,110 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
+        }
+    }
+    private void buscarCliente() {
+        String cod = JOptionPane.showInputDialog("INGRESE EL CODIGO DEL CLIENTE A BUSCAR");
+        try {
+            stmt = cn.createStatement();
+            qry = "SELECT ID_CLIENTE,NOMBRE,APELLIDO,RAZON_SOCIAL,NIT,DIRECCION,TELEFONO,EMAIL,FECHA_INGRESO,ESTATUS"
+                    + " FROM USUARIO_JAVA.CLIENTE"
+                    + " WHERE ID_CLIENTE = " + Integer.parseInt(cod) + " AND ESTATUS=1";
+            r = stmt.executeQuery(qry);
+
+            if (r.next()) {
+                JOptionPane.showMessageDialog(this, "Cliente Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                this.txtId.setText(r.getString(1));
+                this.txtNombre.setText(r.getString(2));
+                this.txtApellido.setText(r.getString(3));
+                this.txtRazon.setText(r.getString(4));
+                this.txtNit.setText(r.getString(5));
+                this.txtDire.setText(r.getString(6));
+                this.txtTelefono.setText(r.getString(7));
+                this.txtEmail.setText(r.getString(8));
+                String stringFecha = Funciones.obtenerFecha(r.getString(9));
+                this.dateChoser.setDate(Funciones.parsearFechaJava(stringFecha));
+
+                this.btnNuevo.setEnabled(false);
+                this.btnGuardar.setEnabled(false);
+                this.btnBuscar.setEnabled(false);
+                this.btnModificar.setEnabled(true);
+                this.btnEliminar.setEnabled(true);
+                this.btnCancelar.setEnabled(true);
+                habilitar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Cliente  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
+            JOptionPane.showMessageDialog(this, e.toString());
+        }
+    }
+    private void modificarCliente() {
+        String id = txtId.getText(), nombre = txtNombre.getText(), apellido = txtApellido.getText();
+        String telefono = txtTelefono.getText(), nit = txtNit.getText(), razon = txtRazon.getText();
+        String direccion = txtDire.getText(), email = txtEmail.getText(), fecha = Funciones.getFecha(dateChoser);
+
+        try {
+            cts = cn.prepareCall("{call ACTUALIZAR_CLIENTE(?,?,?,?,?,?,?,?,?,?)}");
+            cts.setInt(1, Integer.parseInt(id));
+            cts.setString(2, nombre);
+            cts.setString(3, apellido);
+            cts.setString(4, razon);
+            cts.setString(5, nit);
+            cts.setString(6, direccion);
+            cts.setString(7, telefono);
+            cts.setString(8, email);
+            cts.setDate(9, Funciones.parseaFechaOracle(fecha));
+            cts.setInt(10, 1);
+
+            int rpta = cts.executeUpdate();
+            if (rpta == 1) {
+                JOptionPane.showMessageDialog(this, "Proveedor Modificado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+                desabilitar();
+                this.btnBuscar.setEnabled(true);
+                this.btnNuevo.setEnabled(true);
+                this.btnModificar.setEnabled(false);
+                this.btnEliminar.setEnabled(false);
+                this.btnCancelar.setEnabled(false);
+                mostrarDatos();
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Error al modificar", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
+            JOptionPane.showMessageDialog(this, e.toString());
+        }
+    }
+   
+    private void eliminarCliente() {
+        String cod = this.txtId.getText();
+        try {
+            cts = cn.prepareCall("{call ELIMINAR_CLIENTE(?,?)}");
+            cts.setInt(1, Integer.parseInt(cod));
+            cts.setInt(2, 0);
+            int rpta = cts.executeUpdate();
+
+            if (rpta == 1) {
+                JOptionPane.showMessageDialog(this, "Cliente Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+
+                limpiar();
+                desabilitar();
+                this.btnBuscar.setEnabled(true);
+                this.btnNuevo.setEnabled(true);
+                this.btnModificar.setEnabled(false);
+                this.btnEliminar.setEnabled(false);
+                this.btnCancelar.setEnabled(false);
+                mostrarDatos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Cliente No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(this, e);
         }
     }
 
@@ -603,7 +634,7 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
     }
 
     private void habilitar() {
-        this.txtId.setEnabled(true);
+        this.txtId.setEnabled(false);
         this.txtNombre.setEnabled(true);
         this.txtApellido.setEnabled(true);
         this.txtRazon.setEnabled(true);
@@ -625,44 +656,9 @@ public class ClienteInternal extends javax.swing.JInternalFrame {
         this.txtDire.setEnabled(false);
         this.dateChoser.setEnabled(false);
     }
-
-    private void mostrarDatos() {
-        DefaultTableModel model = new DefaultTableModel();
-
-        model.addColumn("ID_CLIENTE");
-        model.addColumn("NOMBRE");
-        model.addColumn("APELLIDO");
-        model.addColumn("RAZON");
-        model.addColumn("NIT");
-        model.addColumn("DIRECCION");
-        model.addColumn("TELEFONO");
-        model.addColumn("EMAIL");
-        model.addColumn("FECHA_INGRESO");
-        try {
-            stmt = cn.createStatement();
-            qry = "Select * from CLIENTE where ESTATUS='1'";
-            ResultSet rs = stmt.executeQuery(qry);
-            while (rs.next()) {
-                Object[] fila = new Object[model.getColumnCount()];
-                for (int i = 0; i < fila.length; i++) {
-                    if (i == 8) {
-                        String stringFecha = Funciones.obtenerFecha(rs.getString(i+1));
-                        fila[i] = Funciones.parsearFechaJava(stringFecha);
-                    } else {
-                        fila[i] = rs.getString(i + 1);
-                    }
-
-                }
-                model.addRow(fila);
-            }
-            this.jTableCliente.setModel(model);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;

@@ -5,6 +5,7 @@
  */
 package forms;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -49,6 +50,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         aboutSistema = new javax.swing.JMenuItem();
         exitSistema = new javax.swing.JMenuItem();
@@ -116,6 +118,11 @@ public class Inicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuItem1.setText("Empleados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Proveedores");
@@ -141,6 +148,14 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("USUARIOS");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
@@ -186,7 +201,7 @@ public class Inicio extends javax.swing.JFrame {
     private void exitSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitSistemaActionPerformed
         // TODO add your handling code here:
         int opcion = 0;
-        opcion = JOptionPane.showConfirmDialog(null,"Realmente desea salir del sistema","Confirmar",JOptionPane.YES_NO_OPTION);
+        opcion = JOptionPane.showConfirmDialog(null,"Realmente desea salir","Confirmar",JOptionPane.YES_NO_OPTION);
 
         if (opcion == JOptionPane.YES_NO_OPTION){
             System.exit(0);
@@ -200,18 +215,18 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(cli);
             cli.show();
             cli.setLocation(50, 5);
-        }catch(Exception e){}
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
 
-       /* try{
-            Productos pl = new Productos();
-            jDesktopPane1.add(pl);
-            pl.show();
-            pl.setLocation(50,5);
-        }catch(Exception e){}*/
+       try{
+            ProductoInternal cli =new ProductoInternal();
+            this.jpanel1.add(cli);
+            cli.show();
+            cli.setLocation(50, 5);
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
@@ -224,7 +239,7 @@ public class Inicio extends javax.swing.JFrame {
         this.jpanel1.add(dep);
         dep.show();
         dep.setLocation(50,5);
-        }catch(Exception e){}
+        }catch(SQLException e){}
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -233,10 +248,32 @@ public class Inicio extends javax.swing.JFrame {
             this.jpanel1.add(pro);
             pro.show();
             pro.setLocation(50,5);
-        }catch(Exception e){
+        }catch(SQLException e){
             
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try{
+            EmpleadoInternal pro = new EmpleadoInternal();
+            this.jpanel1.add(pro);
+            pro.show();
+            pro.setLocation(50,5);
+        }catch(SQLException e){
+            
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       try{
+           UsuarioInternal usu = new UsuarioInternal();
+           this.jpanel1.add(usu);
+           usu.setLocation(50,50);
+           usu.show();
+       }catch(Exception e){
+           
+       }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,6 +304,7 @@ public class Inicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Inicio().setVisible(true);
             }
@@ -287,6 +325,7 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JDesktopPane jpanel1;
     private javax.swing.JLabel txtFecha;

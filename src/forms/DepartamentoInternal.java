@@ -58,6 +58,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaDepartamento = new javax.swing.JTable();
 
@@ -124,6 +125,14 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
 
         jLabel1.setText("ID");
 
+        btnCancelar.setText("Calcelar");
+        btnCancelar.setEnabled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,7 +150,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,8 +160,10 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                             .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar)))
-                .addGap(29, 29, 29))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnCancelar))
+                        .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +179,8 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnCancelar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
@@ -225,6 +237,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
         btnNuevo.setEnabled(false);
         btnGuardar.setEnabled(true);
         btnBuscar.setEnabled(false);
+        this.btnCancelar.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -243,7 +256,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
             stmt = cn.createStatement();
             qry = "SELECT ID_DEPARTAMENTO,DESCRIPCION "
                     + " FROM USUARIO_JAVA.DEPARTAMENTO"
-                    + " WHERE ID_DEPARTAMENTO = " + Integer.parseInt(cod+"AND ESTADO=1");
+                    + " WHERE ID_DEPARTAMENTO = " + Integer.parseInt(cod+" AND ESTADO=1");
             r = stmt.executeQuery(qry);
 
             if (r.next()) {
@@ -257,6 +270,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                 this.btnBuscar.setEnabled(false);
                 this.btnModificar.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
+                this.btnCancelar.setEnabled(true);
                 habilitar();
             } else {
                 JOptionPane.showMessageDialog(this, "DEPARTAMENTO  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -283,6 +297,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                 this.btnNuevo.setEnabled(true);
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
+                this.btnCancelar.setEnabled(false);
                 mostrarDatos();
             } else {
 
@@ -311,6 +326,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
                 this.btnNuevo.setEnabled(true);
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
+                this.btnCancelar.setEnabled(false);
                 mostrarDatos();
             } else {
                 JOptionPane.showMessageDialog(this, "Departamento No Eliminado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -321,6 +337,17 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.limpiar();
+        this.desabilitar();
+        this.btnGuardar.setEnabled(false);
+        this.btnNuevo.setEnabled(true);
+        this.btnCancelar.setEnabled(false);
+        this.btnBuscar.setEnabled(true);
+        this.btnEliminar.setEnabled(false);
+        this.btnModificar.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
     private void limpiar() {
         txtId.setText("");
         txtNombre.setText("");
@@ -369,8 +396,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
         }
     }
 
@@ -382,7 +408,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
 
         try {
             stmt = cn.createStatement();
-            qry = "Select * from DEPARTAMENTO WHERE ESTADO=1";
+            qry = "Select * from DEPARTAMENTO WHERE ESTADO=1 ORDER BY ID_DEPARTAMENTO";
             ResultSet rs = stmt.executeQuery(qry);
             while (rs.next()) {
                 Object[] fila = new Object[model.getColumnCount()];
@@ -402,6 +428,7 @@ public class DepartamentoInternal extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
