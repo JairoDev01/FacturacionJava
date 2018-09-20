@@ -57,6 +57,11 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogDepartamento = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableDep = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmpleado = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -83,6 +88,65 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         lvlApellido1 = new javax.swing.JLabel();
         txtApellido2 = new javax.swing.JTextField();
         btnBuscarDep = new javax.swing.JButton();
+
+        jDialogDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDialogDepartamento.setLocationByPlatform(true);
+        jDialogDepartamento.setMinimumSize(new java.awt.Dimension(665, 419));
+        jDialogDepartamento.setModal(true);
+        jDialogDepartamento.setResizable(false);
+
+        jTableDep.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableDep);
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogDepartamentoLayout = new javax.swing.GroupLayout(jDialogDepartamento.getContentPane());
+        jDialogDepartamento.getContentPane().setLayout(jDialogDepartamentoLayout);
+        jDialogDepartamentoLayout.setHorizontalGroup(
+            jDialogDepartamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogDepartamentoLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jButton1)
+                .addGap(139, 139, 139)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogDepartamentoLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialogDepartamentoLayout.setVerticalGroup(
+            jDialogDepartamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogDepartamentoLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jDialogDepartamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setClosable(true);
         setIconifiable(true);
@@ -224,7 +288,6 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
         });
 
         btnBuscarDep.setText("B");
-        btnBuscarDep.setEnabled(false);
         btnBuscarDep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarDepActionPerformed(evt);
@@ -439,8 +502,55 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtApellido2KeyTyped
 
     private void btnBuscarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepActionPerformed
-        // TODO add your handling code here:
+        try{
+            mostarDepartamento();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btnBuscarDepActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.jDialogDepartamento.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            int row = this.jTableDep.getSelectedRow();
+            if (row != -1) {
+                String id = (String) jTableDep.getValueAt(row, 0);
+                String modelo = (String) jTableDep.getValueAt(row, 1);
+                this.txtDep.setText(id);
+                this.jDialogDepartamento.dispose();
+            } else {
+                 JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }catch(Exception e){
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void mostarDepartamento(){
+        DefaultTableModel model = new DefaultTableModel();
+        
+        model.addColumn("ID_DEPARTAMENTO");
+        model.addColumn("DEPARTAMENTO");
+        try {
+            stmt = cn.createStatement();
+            qry = "Select ID_DEPARTAMENTO,DESCRIPCION FROM DEPARTAMENTO WHERE ESTADO='1' ORDER BY ID_DEPARTAMENTO";
+            ResultSet rs = stmt.executeQuery(qry);
+            while (rs.next()) {
+                Object[] fila = new Object[model.getColumnCount()];
+                for (int i = 0; i < fila.length; i++) {
+                    fila[i] = rs.getString(i + 1);
+
+                }
+                model.addRow(fila);
+            }
+            this.jTableDep.setModel(model);
+        } catch (SQLException ex) {
+        }
+        this.jDialogDepartamento.show();
+    }
     private void obtenerId() {
         try {
 
@@ -654,8 +764,13 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialogDepartamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableDep;
     private javax.swing.JTable jTableEmpleado;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDire;
