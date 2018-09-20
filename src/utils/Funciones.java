@@ -3,6 +3,8 @@ package utils;
 import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -62,8 +64,9 @@ public class Funciones {
             evt.consume();
         }
     }
+
     public static void valCampoNit(java.awt.event.KeyEvent evt, String campo) {
-         char car = evt.getKeyChar();
+        char car = evt.getKeyChar();
         if (campo.length() >= 10) {
             evt.consume();
         }
@@ -71,11 +74,28 @@ public class Funciones {
             evt.consume();
         }
     }
+
     public static void valCampoTexto(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < ' ' || car > ' ')
-                &&(car =='á'||car=='Á')&&(car =='é'||car=='É')&&(car =='í'||car=='Í')&&(car =='ó'||car=='Ó')&&(car =='ú'||car=='Ú')) {
+                && (car == 'á' || car == 'Á') && (car == 'é' || car == 'É') && (car == 'í' || car == 'Í') && (car == 'ó' || car == 'Ó') && (car == 'ú' || car == 'Ú')) {
             evt.consume();
         }
+    }
+
+    public static String obtenerIdTable(JTable table) {
+        String id="1";
+        try {
+            
+            int row = table.getSelectedRow();
+            if (row != -1) {
+                id = (String) table.getValueAt(row, 0);
+            } else {                
+
+            }
+        } catch (Exception e) {
+
+        }
+        return id;
     }
 }

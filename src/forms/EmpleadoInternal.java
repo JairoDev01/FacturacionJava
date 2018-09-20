@@ -561,6 +561,7 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
             this.jTableDep.setModel(model);
         } catch (SQLException ex) {
         }
+        this.jDialogDepartamento.setLocationRelativeTo(null);
         this.jDialogDepartamento.show();
     }
 
