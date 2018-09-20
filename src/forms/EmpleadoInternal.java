@@ -522,20 +522,16 @@ public class EmpleadoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int row = this.jTableDep.getSelectedRow();
-            if (row != -1) {
-                String id = (String) jTableDep.getValueAt(row, 0);
-                String modelo = (String) jTableDep.getValueAt(row, 1);
-                this.txtDep.setText(id);
-                this.jDialogDepartamento.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
-
-            }
-        } catch (Exception e) {
-
-        }
+        try{
+           if(Funciones.obtenerIdTable(this.jTableDep).equals("1")){
+               JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+           }else{
+               this.txtDep.setText(Funciones.obtenerIdTable(this.jTableDep));
+               this.jDialogDepartamento.dispose();
+           }
+       }catch(HeadlessException e){
+           
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDepKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDepKeyTyped
