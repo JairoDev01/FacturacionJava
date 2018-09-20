@@ -57,6 +57,11 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogProveedor = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableProveedor = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblCodigo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -76,9 +81,67 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         lblNombre1 = new javax.swing.JLabel();
         lvlApellido1 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        btnBuscarDep = new javax.swing.JButton();
+        btnProveedor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProducto = new javax.swing.JTable();
+
+        jDialogProveedor.setMinimumSize(new java.awt.Dimension(685, 350));
+        jDialogProveedor.setModal(true);
+        jDialogProveedor.setResizable(false);
+
+        jTableProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableProveedor);
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogProveedorLayout = new javax.swing.GroupLayout(jDialogProveedor.getContentPane());
+        jDialogProveedor.getContentPane().setLayout(jDialogProveedorLayout);
+        jDialogProveedorLayout.setHorizontalGroup(
+            jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogProveedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(jDialogProveedorLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jButton1)
+                .addGap(184, 184, 184)
+                .addComponent(Salir)
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+        jDialogProveedorLayout.setVerticalGroup(
+            jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogProveedorLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jDialogProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(Salir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         setClosable(true);
         setIconifiable(true);
@@ -193,11 +256,11 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        btnBuscarDep.setText("B");
-        btnBuscarDep.setEnabled(false);
-        btnBuscarDep.addActionListener(new java.awt.event.ActionListener() {
+        btnProveedor.setText("B");
+        btnProveedor.setEnabled(false);
+        btnProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarDepActionPerformed(evt);
+                btnProveedorActionPerformed(evt);
             }
         });
 
@@ -239,7 +302,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                                 .addGap(159, 159, 159))
                             .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscarDep)))
+                        .addComponent(btnProveedor)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +340,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDire)
-                            .addComponent(btnBuscarDep)))
+                            .addComponent(btnProveedor)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -357,6 +420,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         btnGuardar.setEnabled(true);
         btnBuscar.setEnabled(false);
         btnCancelar.setEnabled(true);
+        btnProveedor.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -370,7 +434,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         insertarEmpleado();
         mostrarDatos();
-        this.btnCancelar.setEnabled(false);
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -390,6 +454,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         this.btnBuscar.setEnabled(true);
         this.btnEliminar.setEnabled(false);
         this.btnModificar.setEnabled(false);
+        this.btnProveedor.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
@@ -400,13 +465,66 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
         Funciones.valCampoNit(evt, this.txtPrecio.getText());
     }//GEN-LAST:event_txtPrecioKeyTyped
 
-    private void btnBuscarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarDepActionPerformed
+    private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
+        try {
+            mostrarProveedores();
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_btnProveedorActionPerformed
 
     private void txtProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProKeyTyped
         Funciones.valCampoNit(evt, this.txtPro.getText());
     }//GEN-LAST:event_txtProKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       try{
+           if(Funciones.obtenerIdTable(jTableProveedor).equals("1")){
+               JOptionPane.showMessageDialog(this, "Seleccione una Fila!!", "Atencion", JOptionPane.INFORMATION_MESSAGE);
+           }else{
+               this.txtPro.setText(Funciones.obtenerIdTable(jTableProveedor));
+               this.jDialogProveedor.dispose();
+           }
+       }catch(HeadlessException e){
+           
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+       try{
+           this.jDialogProveedor.dispose();
+       }catch(Exception e){
+           
+       }
+    }//GEN-LAST:event_SalirActionPerformed
+    private void mostrarProveedores() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("ID_PROVEEDOR");
+            model.addColumn("EMPRESA");
+            model.addColumn("DIRECCION");
+
+            stmt = cn.createStatement();
+            qry = "Select ID_PROVEEDOR, EMPRESA, DIRECCION FROM PROVEEDOR where ESTATUS='1' ORDER BY ID_PROVEEDOR";
+            ResultSet rs = stmt.executeQuery(qry);
+            while (rs.next()) {
+                Object[] fila = new Object[model.getColumnCount()];
+                for (int i = 0; i < fila.length; i++) {
+                    fila[i] = rs.getString(i + 1);
+                }
+                model.addRow(fila);
+            }
+            this.jTableProveedor.setModel(model);
+
+        } catch (SQLException e) {
+
+        }
+        this.jDialogProveedor.setLocationRelativeTo(null);
+        this.jDialogProveedor.show();
+    }
+
     private void obtenerId() {
         try {
 
@@ -473,6 +591,8 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
             btnBuscar.setEnabled(true);
+            this.btnCancelar.setEnabled(false);
+            this.btnProveedor.setEnabled(false);
         } catch (HeadlessException | NumberFormatException | SQLException e) {
             JOptionPane.showMessageDialog(this, e.toString());
         }
@@ -495,13 +615,14 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 this.txtStocMin.setText(r.getString(4));
                 this.txtPrecio.setText(r.getString(5));
                 this.txtPro.setText(r.getString(6));
-                           
+
                 this.btnNuevo.setEnabled(false);
                 this.btnGuardar.setEnabled(false);
                 this.btnBuscar.setEnabled(false);
                 this.btnModificar.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
+                this.btnProveedor.setEnabled(true);
                 habilitar();
             } else {
                 JOptionPane.showMessageDialog(this, "producto  No Encontrado!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -534,6 +655,7 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
                 this.btnModificar.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
+                this.btnProveedor.setEnabled(false);
                 mostrarDatos();
             } else {
 
@@ -605,16 +727,21 @@ public class ProductoInternal extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscarDep;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnProveedor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialogProveedor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableProducto;
+    private javax.swing.JTable jTableProveedor;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDire;
     private javax.swing.JLabel lblNombre;
